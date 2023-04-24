@@ -1,0 +1,41 @@
+
+--- Problem 
+- so simple stateful widgets works like this, parent widget communicate with child
+widget and child widget might have its own child which it is communicating with,
+now at the time of changes in data any of the child passes the data to parent and 
+we get the UI updated from there.
+
+- now problem here is that working with stateful widget is only useful when we have 
+small widget tree or the data changes in only small number of widgets and are in hierarchy,
+because we cant pass data sideways , it only works in upward or downward direction.
+
+- now imaging we are working with the 10 times larger tree then as we guessed it is bad for 
+performance with just too much boilerplate code and we will have hard time testing too.
+
+- so stateful widget is perfect when we are only working with very small component 
+and that component doesn't have to pass data around the application.
+
+---- Solution --> state management(in this case Provider)
+
+- now in this case what we can do is separate the UI from state with [Provider] here.
+
+- in here we can wrap our parent widget with [Provider] and provide through that state.
+
+- this state will be accessible for every widget under this one specific widget. s
+So we will provide information down to whole widget tree.
+
+- now here state means a class in which we will write our logic which will handle 
+the actual state. that means..
+ 
+-- for example, in our case our [ThemeService] that holds the information , if we are on dark
+    or light theme, and the state we can also control it,
+    and provider here just provides the information about the state down to the widget tree. 
+    Which means that we can listen to the provide state on different places of our widget tree 
+    in entire application if they come under the widget we have wrapped our [Provider] with.
+
+- so in this example we will create a [ThemeService] and with the provider we will provide that [ThemeService]
+    down the widget tree.That means we can toggle the theme from every page and also react on that theme too.
+
+
+
+
